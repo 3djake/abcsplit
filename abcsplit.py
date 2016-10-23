@@ -1,4 +1,4 @@
-''' ABCsplit version 0.7a by 3djake 
+''' ABCsplit version 0.8a by 3djake 
 ----ABOUT-----
 
 A Simple ABC file splitter intended for use with Shroud of the Avatar
@@ -61,7 +61,11 @@ def splitfile():
 			lists.append(sublist)
 			sublist = []
 		else:
-			sublist.append(item)	
+			sublist.append(item)
+	if ourlist[len(ourlist)-1] != "\n":
+		lists.append(sublist)
+		sublist = []
+		
 	
 
 #Save the files
