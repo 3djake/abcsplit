@@ -64,8 +64,9 @@ def exportfile():
 	for l in lists[1:]:
 		ofile = open("output/" + filename[0:len(filename)-4] + "-" + instname(l) + ".abc", 'w')
 		#write the header first
-		for line in lists[0]:
-			ofile.write(line)
+		#Edit as of now, SotA does not play nice with the header comments
+		#for line in lists[0]:
+		#	ofile.write(line)
 		#write the notation for the instrument
 		for item in l:
 			ofile.write(item)
