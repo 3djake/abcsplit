@@ -137,4 +137,4 @@ for arg in glob.glob(sys.argv[1]):
 	splitfile()
 	exportfile()
 	createbandfile()
-lists = []
+	lists = []
