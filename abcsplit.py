@@ -15,6 +15,10 @@ You can also use wildcards(do multiple files at once) but you have to use qoutes
 python abcsplit.py "*.abc"
 
 Windows users, you will have to use the fullpath name to python.
+
+In game, you want to /play songname.txt
+Note that we play the txt file not the abc file, you will play the part the instrument you have equipped. If the instrument
+you are playing does not exist in the txt file then you will not hear anything
 ---------------
 Another Note: The last item of T: in the ABC files must be the name a instrument for example
 T: Tomaso Albinon - Adagi (8:21) - Bagpipes
