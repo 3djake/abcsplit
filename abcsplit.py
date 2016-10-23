@@ -1,4 +1,4 @@
-''' ABCsplit version 0.8a by 3djake 
+''' ABCsplit version 0.9a by 3djake 
 ----ABOUT-----
 
 A Simple ABC file splitter intended for use with Shroud of the Avatar
@@ -98,8 +98,11 @@ def exportfile():
 
 #Creates the band .txt file
 def createbandfile():
+	i = 1
+	if headerless == 1:
+		i = 0
 	ofile = open("output/" + filename[0:len(filename)-4] + ".txt", 'w')
-	for l in lists[1:]:
+	for l in lists[i:]:
 		#We will only add instruments currently in the game to this file
 		if instname(l) == "Accordian":
 			ofile.write("Accordian=" + filename[0:len(filename)-4] + "-" + instname(l) + ".abc\n")
@@ -135,7 +138,7 @@ def instname(l):
 	if instrument == "Lute of the Ages":
 		instrument = "Piano"
 	if instrument == "Cello":
-		instrument = "Accordion"
+		instrument = "Accordian"
 	if instrument == "Theorbo":
 		instrument = "StreetOrgan"
 	if instrument == "Clarinet":
