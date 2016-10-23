@@ -17,8 +17,7 @@ python abcsplit.py "*.abc"
 Windows users, you will have to use the fullpath name to python.
 
 In game, you want to /play songname.txt
-Note that we play the txt file not the abc file, you will play the part the instrument you have equipped. If the instrument
-you are playing does not exist in the txt file then you will not hear anything
+Note that we play the txt file not the abc file, you will play the part the instrument you have equipped. If the instrument you are playing does not exist in the txt file then you will not hear anything
 ---------------
 Another Note: The last item of T: in the ABC files must be the name a instrument for example
 T: Tomaso Albinon - Adagi (8:21) - Bagpipes
@@ -71,6 +70,9 @@ def splitfile():
 	if ourlist[len(ourlist)-1] != "\n":
 		lists.append(sublist)
 		sublist = []
+	#If there was no header then we need to add a newline so the first instrument gets exported correctly
+	if headerless == 1:
+		lists[0].insert(0,"\n")
 		
 	
 
@@ -79,7 +81,10 @@ def exportfile():
 	#Crerate a new folder to output new files
 	if not os.path.exists("output"):
     		os.makedirs("output")
-	for l in lists[1:]:
+	i = 1
+	if headerless == 1:
+		i = 0
+	for l in lists[i:]:
 		ofile = open("output/" + filename[0:len(filename)-4] + "-" + instname(l) + ".abc", 'w')
 		#write the header first
 		#Edit as of now, SotA does not play nice with the header comments so we will comment this at for now
