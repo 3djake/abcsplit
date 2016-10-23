@@ -3,7 +3,8 @@ A Simple ABC file splitter intended for use with Shroud of the Avatar
 ABC files can contain parts for multiple instruments, at the moment this will not work for shroud of the Avatar as 
 each instrument must be contained within its own file. This program do just that and it can be done in batch.
 
-Note - I have only tested this on Linux using Python Version 2.7.12
+Note - I have only tested this on Linux nad windows using Python Version 2.7.12
+Note - This script also assumes there is a comment header in the file you are trying to split
 Usage:
 Change to the directory with the files to want to work with, a output folder will be created there once the split
 has been finished.
