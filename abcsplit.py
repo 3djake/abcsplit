@@ -25,7 +25,7 @@ lists = []
 #Load our file into a list
 def loadfile():
 	global ourlist
-	f = open(filename, "r")
+	f = open(filename, "rU")
 	ourlist = f.readlines()
 	f.close()
 
@@ -38,7 +38,7 @@ def splitfile():
 	for item in ourlist:
 		#Seperate the header, we will need it for each file
 		if headerfin == 0:
-			if item != "\r\n":
+			if item != "\n":
 				sublist.append(item)
 			else:
 				headerfin = 1
@@ -47,7 +47,7 @@ def splitfile():
 		#Count newline characters so we know when to create new list
 		if item[0] == "X":
 			nl = 0
-		if item == "\r\n":
+		if item == "\n":
 			nl+=1
 		if nl == 2:
 			lists.append(sublist)
