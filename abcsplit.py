@@ -1,21 +1,24 @@
-''' ABCsplit version 0.5a by 3djake 
+''' ABCsplit version 0.7a by 3djake 
+----ABOUT-----
+
 A Simple ABC file splitter intended for use with Shroud of the Avatar
 ABC files can contain parts for multiple instruments, at the moment this will not work for shroud of the Avatar as 
-each instrument must be contained within its own file. This program do just that and it can be done in batch.
-
+each instrument must be contained within its own file. This program can do just that and it can be done in batch.
+--------------
 Note - I have only tested this on Linux nad windows using Python Version 2.7.12
-Note - This script also assumes there is a comment header in the file you are trying to split
-Usage:
-Change to the directory with the files to want to work with, a output folder will be created there once the split
-has been finished.
+--------------
+-----Usage-----
+In a terminal or command prompt change to the directory with that contains the abc files to want to work with, a output folder will be created there once the split has been finished.
 The program works as follows
 python abcsplit.py filename.abc
 You can also use wildcards(do multiple files at once) but you have to use qoutes
 python abcsplit.py "*.abc"
 
+Windows users, you will have to use the fullpath name to python.
+---------------
 Another Note: The last item of T: in the ABC files must be the name a instrument for example
 T: Tomaso Albinon - Adagi (8:21) - Bagpipes
-
+---------------
 This program is free software under the the terms of the GNU General Public License as published by
     the Free Software Foundation, Version 3. See <http://www.gnu.org/licenses/>.'''
 
@@ -36,9 +39,13 @@ def splitfile():
 	headerfin = 0
 	nl = 0
 	sublist = []
+	global headerless 
+	headerless = 0
+	if ourlist [0][0] == "X":
+		headerless = 1
 	for item in ourlist:
 		#Seperate the header, we will need it for each file
-		if headerfin == 0:
+		if headerfin == 0 and headerless == 0:
 			if item != "\n":
 				sublist.append(item)
 			else:
@@ -66,8 +73,9 @@ def exportfile():
 		ofile = open("output/" + filename[0:len(filename)-4] + "-" + instname(l) + ".abc", 'w')
 		#write the header first
 		#Edit as of now, SotA does not play nice with the header comments
-		#for line in lists[0]:
-		#	ofile.write(line)
+		#if headerless == 0:
+		#	for line in lists[0]:
+		#		ofile.write(line)
 		#write the notation for the instrument
 		for item in l[1:]:
 			ofile.write(item)
@@ -129,4 +137,4 @@ for arg in glob.glob(sys.argv[1]):
 	splitfile()
 	exportfile()
 	createbandfile()
-	lists = []
+lists = []
