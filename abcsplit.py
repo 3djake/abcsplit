@@ -103,6 +103,7 @@ def instname(l):
 	instrument = instrument.strip()
 	#Convert from instruments in other games to SotA
 	#Add instruments from other games here and what instrument you want to be converted to
+	#Make sure you do not end up with duplicate instruments, you may end up with missing parts
 	if instrument == "Basic Lute":
 		instrument = "Lute"
 	if instrument == "Drums":
@@ -111,6 +112,14 @@ def instname(l):
 		instrument = "Piano"
 	if instrument == "Cello":
 		instrument = "Accordion"
+	if instrument == "Theorbo":
+		instrument = "StreetOrgan"
+	if instrument == "Clarinet":
+		instrument = "Flute"
+	if instrument == "Cowbell":
+		instrument = "Drum"
+	if instrument == "Pibgorn":
+		instrument = "Accordian"
 	return instrument
 
 #We will use globbing to enable easy wildcards on multiple platforms
