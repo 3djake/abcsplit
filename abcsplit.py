@@ -69,7 +69,7 @@ def exportfile():
 		#for line in lists[0]:
 		#	ofile.write(line)
 		#write the notation for the instrument
-		for item in l[1:len(l)]:
+		for item in l[1:]:
 			ofile.write(item)
 		ofile.close()
 
