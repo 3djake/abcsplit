@@ -41,6 +41,7 @@ def splitfile():
 	sublist = []
 	global headerless 
 	headerless = 0
+	#Check if the file actually has a comment header
 	if ourlist [0][0] == "X":
 		headerless = 1
 	for item in ourlist:
@@ -62,6 +63,7 @@ def splitfile():
 			sublist = []
 		else:
 			sublist.append(item)
+	#Just in case there was no newline before end of file.
 	if ourlist[len(ourlist)-1] != "\n":
 		lists.append(sublist)
 		sublist = []
@@ -76,7 +78,7 @@ def exportfile():
 	for l in lists[1:]:
 		ofile = open("output/" + filename[0:len(filename)-4] + "-" + instname(l) + ".abc", 'w')
 		#write the header first
-		#Edit as of now, SotA does not play nice with the header comments
+		#Edit as of now, SotA does not play nice with the header comments so we will comment this at for now
 		#if headerless == 0:
 		#	for line in lists[0]:
 		#		ofile.write(line)
@@ -116,6 +118,7 @@ def instname(l):
 	#Convert from instruments in other games to SotA
 	#Add instruments from other games here and what instrument you want to be converted to
 	#Make sure you do not end up with duplicate instruments, you may end up with missing parts
+	#This part you should customize to your liking
 	if instrument == "Basic Lute":
 		instrument = "Lute"
 	if instrument == "Drums":
